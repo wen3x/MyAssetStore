@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('assets.urls')),
+    path('api/accounts/', include('rest_registration.api.urls')),
 ]
 
 if settings.DEBUG:

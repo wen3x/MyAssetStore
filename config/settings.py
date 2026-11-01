@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     "users",
     "assets",
     'rest_framework',
+    'rest_registration',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +96,24 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "users.User"
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
+
+REST_REGISTRATION = {
+    'REGISTER_VERIFICATION_ENABLED': False,
+    'RESET_PASSWORD_VERIFICATION_ENABLED': False,
+    'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
+    'USER_PUBLIC_FIELDS': (
+        'username',
+        'email',
+    ),
+    'LOGIN_RETRIEVE_TOKEN': True,
+}
 
 
 # Internationalization
