@@ -8,7 +8,7 @@ from .serializers import AssetSe
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .permissions import IsPublisherOrReadOnly
 
-class Asset(viewsets.ModelViewSet):
+class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
     serializer_class = AssetSe
     permission_classes = [IsAuthenticatedOrReadOnly, IsPublisherOrReadOnly,]
