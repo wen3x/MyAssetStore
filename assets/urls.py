@@ -5,6 +5,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r"asset", views.AssetViewSet)
+router.register(r"favorites", views.FavoriteViewSet, basename="favorite")
 
 urlpatterns = [
     path("", include(router.urls)),
