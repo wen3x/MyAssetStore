@@ -16,6 +16,9 @@ class AssetViewSet(viewsets.ModelViewSet):
     serializer_class = AssetSe
     pagination_class = AssetPa
     permission_classes = [IsAuthenticatedOrReadOnly, IsPublisherOrReadOnly,]
+
+    filterset_fields = ["category", "publisher"]
+
     def perform_create(self, serializer):
         serializer.save(publisher=self.request.user)
 
