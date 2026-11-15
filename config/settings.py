@@ -117,6 +117,7 @@ REST_REGISTRATION = {
         'email',
     ),
     'LOGIN_RETRIEVE_TOKEN': True,
+    'PROFILE_SERIALIZER_CLASS': 'users.serializers.CustomProfileSerializer',
 }
 
 
