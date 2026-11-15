@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Asset
 from django.shortcuts import get_object_or_404
 
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, mixins
 from .serializers import AssetSe
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from .permissions import IsPublisherOrReadOnly
@@ -18,7 +18,7 @@ class AssetViewSet(viewsets.ModelViewSet):
         serializer.save(publisher=self.request.user)
 
 
-class FavoriteViewSet(viewsets.ModelViewSet):
+class FavoriteViewSet(mixins.CreateModelMixin, mixins.DestroyModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet ):
     serializer_class = FavoriteSe
     permission_classes = [IsAuthenticated]
 
