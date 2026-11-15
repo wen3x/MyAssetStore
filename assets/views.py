@@ -9,10 +9,12 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from .permissions import IsPublisherOrReadOnly
 from .models import Favorite
 from .serializers import FavoriteSe
+from .pagination import AssetPa
 
 class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
     serializer_class = AssetSe
+    pagination_class = AssetPa
     permission_classes = [IsAuthenticatedOrReadOnly, IsPublisherOrReadOnly,]
     def perform_create(self, serializer):
         serializer.save(publisher=self.request.user)
