@@ -10,6 +10,7 @@ from .permissions import IsPublisherOrReadOnly
 from .models import Favorite
 from .serializers import FavoriteSe
 from .pagination import AssetPa
+from rest_framework.filters import SearchFilter, DjangoFilterBackend
 
 class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
@@ -18,6 +19,11 @@ class AssetViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly, IsPublisherOrReadOnly,]
 
     filterset_fields = ["category", "publisher"]
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+    ]
+    search_fields = ["title", "description"]
 
     def perform_create(self, serializer):
         serializer.save(publisher=self.request.user)
