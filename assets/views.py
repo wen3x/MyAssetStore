@@ -10,7 +10,8 @@ from .permissions import IsPublisherOrReadOnly
 from .models import Favorite
 from .serializers import FavoriteSe
 from .pagination import AssetPa
-from rest_framework.filters import SearchFilter, DjangoFilterBackend
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
 
 class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
