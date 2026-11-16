@@ -22,7 +22,7 @@ Currently, the project consists of a backend API. The frontend will be developed
 ### Asset Query Parameters
 
 - `?category=<categoryId>` — Filter assets by category.
-- `?publisher=<publisherUsername>` — Filter assets by publisher.
+- `?publisher=<publisherId>` — Filter assets by publisher.
 - `?search=<query>` — Search assets by title or description.
 - `?ordering=title` — Sort by title (A–Z).
 - `?ordering=-title` — Sort by title (Z–A).
