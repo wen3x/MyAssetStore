@@ -13,6 +13,9 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # SECURITY WARNING: keep the secret key used in production secret! OK!!
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('1', 'true', 'yes')
+MAX_ASSET_FILE_SIZE = int(os.getenv("MAX_ASSET_FILE_SIZE_MB", 100)) * 1024 * 1024
+MAX_THUMBNAIL_SIZE = int(os.getenv("MAX_THUMBNAIL_SIZE_MB", 5)) * 1024 * 1024
+MAX_AVATAR_SIZE = int(os.getenv("MAX_AVATAR_SIZE_MB", 5)) * 1024 * 1024
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'

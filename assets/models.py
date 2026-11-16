@@ -22,6 +22,7 @@ class Asset(models.Model):
         related_name="assets",
         null=True
     )
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

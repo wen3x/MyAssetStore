@@ -10,7 +10,7 @@ from .permissions import IsPublisherOrReadOnly
 from .models import Favorite
 from .serializers import FavoriteSe
 from .pagination import AssetPa
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 class AssetViewSet(viewsets.ModelViewSet):
@@ -23,8 +23,11 @@ class AssetViewSet(viewsets.ModelViewSet):
     filter_backends = [
         DjangoFilterBackend,
         SearchFilter,
+        OrderingFilter,
     ]
     search_fields = ["title", "description"]
+    ordering_fields = ["title", "created_at"]
+    ordering = ["-created_at"]
 
     def perform_create(self, serializer):
         serializer.save(publisher=self.request.user)

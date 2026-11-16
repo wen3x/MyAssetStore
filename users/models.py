@@ -50,6 +50,11 @@ class Profile(models.Model):
     roles = models.ManyToManyField(
         Specialization, blank=True, related_name="profiles", verbose_name="Roles"
     )
+    avatar = models.ImageField(
+    upload_to="avatars/",
+    blank=True,
+    null=True
+    )
 
     def __str__(self):
         return f"Profile: {self.user.username}"
